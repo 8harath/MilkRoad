@@ -9,18 +9,18 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="border-b-4 border-black bg-yellow-400">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 animate-slide-in">
+            <h1 className="text-4xl md:text-7xl font-bold text-black mb-4 md:mb-6 animate-slide-in leading-tight">
               Pro Crypto Reports
             </h1>
-            <p className="text-xl md:text-2xl text-black mb-8 font-medium">
+            <p className="text-lg md:text-2xl text-black mb-6 md:mb-8 font-medium leading-relaxed">
               Deep dives, tokenomics analysis, and market insights that actually matter.
               No BS, just research.
             </p>
             <Link
               href="/archive"
-              className="retro-button inline-block animate-pop"
+              className="retro-button inline-block animate-pop text-sm md:text-base"
             >
               Explore All Reports →
             </Link>
@@ -29,12 +29,12 @@ export default function Home() {
       </section>
 
       {/* Latest Reports */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 border-b-4 border-black inline-block pb-2">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div className="mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-3 md:mb-4 border-b-4 border-black inline-block pb-2">
             Latest Reports
           </h2>
-          <p className="text-lg text-gray-700 mt-4">
+          <p className="text-base md:text-lg text-gray-700 mt-4">
             Fresh insights from the bleeding edge of crypto
           </p>
         </div>
@@ -85,27 +85,27 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t-4 border-black bg-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-2xl font-bold text-black">
+      <footer className="border-t-4 border-black bg-white py-8 md:py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
+            <div className="text-xl md:text-2xl font-bold text-black">
               🥛 MILK ROAD PRO
             </div>
-            <div className="flex gap-6">
-              <Link href="/" className="text-black font-bold hover:underline">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              <Link href="/" className="text-black font-bold hover:underline text-sm md:text-base">
                 Home
               </Link>
-              <Link href="/archive" className="text-black font-bold hover:underline">
+              <Link href="/archive" className="text-black font-bold hover:underline text-sm md:text-base">
                 Archive
               </Link>
-              <Link href="/intent" className="text-black font-bold hover:underline">
+              <Link href="/intent" className="text-black font-bold hover:underline text-sm md:text-base">
                 Intent
               </Link>
-              <Link href="/contact" className="text-black font-bold hover:underline">
+              <Link href="/contact" className="text-black font-bold hover:underline text-sm md:text-base">
                 Contact
               </Link>
             </div>
-            <div className="text-black font-medium">
+            <div className="text-black font-medium text-sm md:text-base text-center">
               © {new Date().getFullYear()} All rights reserved
             </div>
           </div>

@@ -72,6 +72,79 @@ body {
   box-shadow: 2px 2px 0px 0px #ffffff !important;
 }
 
+/* Dark mode markdown content overrides */
+.dark .markdown-content {
+  color: #ffffff !important;
+}
+
+.dark .markdown-content h1,
+.dark .markdown-content h2,
+.dark .markdown-content h3,
+.dark .markdown-content h4 {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content p,
+.dark .markdown-content li {
+  color: #e0e0e0 !important;
+}
+
+.dark .markdown-content a {
+  color: #ffffff !important;
+}
+
+.dark .markdown-content code {
+  background-color: #333333 !important;
+  color: #ffeb3b !important;
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content pre {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content blockquote {
+  background-color: #1a3a4a !important;
+  border-color: #ffffff !important;
+  color: #e0e0e0 !important;
+}
+
+.dark .markdown-content strong {
+  color: #000000 !important;
+  background-color: #ffeb3b !important;
+}
+
+.dark .markdown-content th {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content td {
+  color: #e0e0e0 !important;
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content img {
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content hr {
+  border-color: #ffffff !important;
+}
+
+.dark .markdown-content table {
+  border-color: #ffffff !important;
+}
+
+/* Dark mode mobile nav */
+.dark .fixed.bg-white {
+  background-color: #000000 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -157,6 +230,32 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #333;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing on mobile */
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Larger text for readability */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Hide scrollbar on mobile for cleaner look */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
 }
 
 /* Markdown content styles */

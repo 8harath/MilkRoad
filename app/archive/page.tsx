@@ -14,11 +14,11 @@ export default function ArchivePage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="border-b-4 border-black bg-blue-400">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <h1 className="text-5xl md:text-7xl font-bold text-black mb-4">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+          <h1 className="text-4xl md:text-7xl font-bold text-black mb-3 md:mb-4 leading-tight">
             Report Archive
           </h1>
-          <p className="text-xl text-black font-medium">
+          <p className="text-lg md:text-xl text-black font-medium">
             {reports.length} reports. Search, filter, and dive deep into crypto research.
           </p>
         </div>
@@ -28,27 +28,27 @@ export default function ArchivePage() {
       <ArchiveClient reports={reports} />
 
       {/* Footer */}
-      <footer className="border-t-4 border-black bg-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-2xl font-bold text-black">
+      <footer className="border-t-4 border-black bg-white py-8 md:py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
+            <div className="text-xl md:text-2xl font-bold text-black">
               🥛 MILK ROAD PRO
             </div>
-            <div className="flex gap-6">
-              <Link href="/" className="text-black font-bold hover:underline">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              <Link href="/" className="text-black font-bold hover:underline text-sm md:text-base">
                 Home
               </Link>
-              <Link href="/archive" className="text-black font-bold hover:underline">
+              <Link href="/archive" className="text-black font-bold hover:underline text-sm md:text-base">
                 Archive
               </Link>
-              <Link href="/intent" className="text-black font-bold hover:underline">
+              <Link href="/intent" className="text-black font-bold hover:underline text-sm md:text-base">
                 Intent
               </Link>
-              <Link href="/contact" className="text-black font-bold hover:underline">
+              <Link href="/contact" className="text-black font-bold hover:underline text-sm md:text-base">
                 Contact
               </Link>
             </div>
-            <div className="text-black font-medium">
+            <div className="text-black font-medium text-sm md:text-base text-center">
               © {new Date().getFullYear()} All rights reserved
             </div>
           </div>
