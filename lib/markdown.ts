@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { cleanMarkdownContent } from './cleanMarkdown';
+import { extractCategories, calculateReadingTime, extractTableOfContents } from './categories';
 
 const reportsDirectory = path.join(process.cwd(), 'newsletters');
 
@@ -11,6 +12,9 @@ export interface Report {
   content: string;
   date?: string | null;
   dateObj?: Date | null;
+  categories?: string[];
+  readingTime?: number;
+  toc?: Array<{ id: string; text: string; level: number }>;
 }
 
 function parseDate(dateStr: string): Date | null {
@@ -52,12 +56,20 @@ export function getAllReports(): Report[] {
       // Extract date from content
       const { dateStr, dateObj } = extractDateFromContent(content);
 
+      // Extract categories and calculate reading time
+      const categories = extractCategories(title, content);
+      const readingTime = calculateReadingTime(content);
+      const toc = extractTableOfContents(content);
+
       return {
         slug,
         title,
         content: cleanMarkdownContent(content),
         date: dateStr || data.date || null,
         dateObj: dateObj || (data.date ? parseDate(data.date) : null),
+        categories,
+        readingTime,
+        toc,
       };
     });
 
@@ -85,12 +97,20 @@ export function getReportBySlug(slug: string): Report | null {
     // Extract date from content
     const { dateStr, dateObj } = extractDateFromContent(content);
 
+    // Extract categories and calculate reading time
+    const categories = extractCategories(title, content);
+    const readingTime = calculateReadingTime(content);
+    const toc = extractTableOfContents(content);
+
     return {
       slug,
       title,
       content: cleanMarkdownContent(content),
       date: dateStr || data.date || null,
       dateObj: dateObj || (data.date ? parseDate(data.date) : null),
+      categories,
+      readingTime,
+      toc,
     };
   } catch (error) {
     return null;

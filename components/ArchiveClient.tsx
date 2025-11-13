@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import type { Report } from '@/lib/markdown';
+import { getAllCategories } from '@/lib/categories';
 
 interface ArchiveClientProps {
   reports: Report[];
@@ -10,66 +11,154 @@ interface ArchiveClientProps {
 
 export default function ArchiveClient({ reports }: ArchiveClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<'date' | 'title' | 'readingTime'>('date');
+  const [searchMode, setSearchMode] = useState<'title' | 'content'>('title');
+
+  const allCategories = useMemo(() => getAllCategories(reports), [reports]);
 
   const filteredAndSortedReports = useMemo(() => {
     let filtered = reports;
 
-    // Filter by search term
-    if (searchTerm) {
-      filtered = reports.filter(report =>
-        report.title.toLowerCase().includes(searchTerm.toLowerCase())
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(report =>
+        report.categories?.includes(selectedCategory)
       );
     }
 
-    // Sort
-    if (sortBy === 'title') {
-      return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
+    // Filter by search term
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(report => {
+        if (searchMode === 'title') {
+          return report.title.toLowerCase().includes(searchLower);
+        } else {
+          // Full-text search
+          return (
+            report.title.toLowerCase().includes(searchLower) ||
+            report.content.toLowerCase().includes(searchLower)
+          );
+        }
+      });
     }
 
-    // Default is already sorted by date from getAllReports()
-    return filtered;
-  }, [reports, searchTerm, sortBy]);
+    // Sort
+    const sorted = [...filtered];
+    if (sortBy === 'title') {
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === 'readingTime') {
+      sorted.sort((a, b) => (a.readingTime || 0) - (b.readingTime || 0));
+    }
+    // Default 'date' is already sorted from getAllReports()
+
+    return sorted;
+  }, [reports, searchTerm, selectedCategory, sortBy, searchMode]);
 
   return (
     <>
       {/* Filter Section */}
       <section className="max-w-7xl mx-auto px-6 py-8 border-b-4 border-black bg-yellow-100">
-        <div className="flex flex-col md:flex-row gap-4 items-center">
-          {/* Search */}
-          <div className="flex-1 w-full">
-            <input
-              type="text"
-              placeholder="Search reports..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 border-4 border-black font-bold text-lg focus:outline-none focus:ring-4 focus:ring-yellow-400"
-            />
+        {/* Search */}
+        <div className="mb-4">
+          <div className="flex gap-2 mb-2">
+            <button
+              onClick={() => setSearchMode('title')}
+              className={`px-3 py-1 border-2 border-black font-bold text-sm transition-all ${
+                searchMode === 'title'
+                  ? 'bg-yellow-400'
+                  : 'bg-white hover:bg-gray-100'
+              }`}
+            >
+              TITLE ONLY
+            </button>
+            <button
+              onClick={() => setSearchMode('content')}
+              className={`px-3 py-1 border-2 border-black font-bold text-sm transition-all ${
+                searchMode === 'content'
+                  ? 'bg-yellow-400'
+                  : 'bg-white hover:bg-gray-100'
+              }`}
+            >
+              FULL TEXT
+            </button>
           </div>
+          <input
+            type="text"
+            placeholder={searchMode === 'title' ? "Search by title..." : "Search entire content..."}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full px-4 py-3 border-4 border-black font-bold text-lg focus:outline-none focus:ring-4 focus:ring-yellow-400"
+          />
+        </div>
 
-          {/* Sort */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => setSortBy('date')}
-              className={`px-4 py-3 border-4 border-black font-bold transition-all ${
-                sortBy === 'date'
-                  ? 'bg-yellow-400 brutal-shadow'
-                  : 'bg-white hover:bg-gray-100'
-              }`}
-            >
-              📅 BY DATE
-            </button>
-            <button
-              onClick={() => setSortBy('title')}
-              className={`px-4 py-3 border-4 border-black font-bold transition-all ${
-                sortBy === 'title'
-                  ? 'bg-yellow-400 brutal-shadow'
-                  : 'bg-white hover:bg-gray-100'
-              }`}
-            >
-              🔤 BY TITLE
-            </button>
+        {/* Categories */}
+        {allCategories.length > 0 && (
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2">FILTER BY CATEGORY:</label>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-3 py-2 border-3 border-black font-bold text-sm transition-all ${
+                  selectedCategory === 'all'
+                    ? 'bg-blue-400 brutal-shadow'
+                    : 'bg-white hover:bg-gray-100'
+                }`}
+              >
+                ALL ({reports.length})
+              </button>
+              {allCategories.map(category => {
+                const count = reports.filter(r => r.categories?.includes(category)).length;
+                return (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-3 py-2 border-3 border-black font-bold text-sm transition-all ${
+                      selectedCategory === category
+                        ? 'bg-blue-400 brutal-shadow'
+                        : 'bg-white hover:bg-gray-100'
+                    }`}
+                  >
+                    {category} ({count})
+                  </button>
+                );
+              })}
+            </div>
           </div>
+        )}
+
+        {/* Sort Options */}
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setSortBy('date')}
+            className={`px-4 py-2 border-4 border-black font-bold transition-all ${
+              sortBy === 'date'
+                ? 'bg-yellow-400 brutal-shadow'
+                : 'bg-white hover:bg-gray-100'
+            }`}
+          >
+            📅 NEWEST FIRST
+          </button>
+          <button
+            onClick={() => setSortBy('title')}
+            className={`px-4 py-2 border-4 border-black font-bold transition-all ${
+              sortBy === 'title'
+                ? 'bg-yellow-400 brutal-shadow'
+                : 'bg-white hover:bg-gray-100'
+            }`}
+          >
+            🔤 A-Z
+          </button>
+          <button
+            onClick={() => setSortBy('readingTime')}
+            className={`px-4 py-2 border-4 border-black font-bold transition-all ${
+              sortBy === 'readingTime'
+                ? 'bg-yellow-400 brutal-shadow'
+                : 'bg-white hover:bg-gray-100'
+            }`}
+          >
+            ⏱️ QUICKEST READ
+          </button>
         </div>
 
         {/* Results count */}
@@ -87,13 +176,16 @@ export default function ArchiveClient({ reports }: ArchiveClientProps) {
             <div className="text-6xl mb-6">🔍</div>
             <h3 className="text-2xl font-bold text-black mb-4">No reports found</h3>
             <p className="text-lg text-gray-700 mb-8">
-              Try adjusting your search term
+              Try adjusting your filters or search term
             </p>
             <button
-              onClick={() => setSearchTerm('')}
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedCategory('all');
+              }}
               className="retro-button"
             >
-              Clear Search
+              Clear All Filters
             </button>
           </div>
         ) : (
@@ -104,16 +196,43 @@ export default function ArchiveClient({ reports }: ArchiveClientProps) {
                 href={`/report/${encodeURIComponent(report.slug)}`}
                 className="retro-card"
               >
-                <div className="mb-4">
+                {/* Categories */}
+                {report.categories && report.categories.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {report.categories.slice(0, 2).map(cat => (
+                      <span
+                        key={cat}
+                        className="text-xs font-bold px-2 py-1 bg-blue-200 border-2 border-black"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                    {report.categories.length > 2 && (
+                      <span className="text-xs font-bold px-2 py-1 bg-gray-200 border-2 border-black">
+                        +{report.categories.length - 2}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Date and Reading Time */}
+                <div className="mb-4 flex flex-wrap gap-2">
                   {report.date && (
                     <div className="inline-block bg-black text-white px-3 py-1 text-sm font-bold">
                       {report.date}
                     </div>
                   )}
+                  {report.readingTime && (
+                    <div className="inline-block bg-yellow-400 text-black px-3 py-1 text-sm font-bold border-2 border-black">
+                      ⏱️ {report.readingTime} min
+                    </div>
+                  )}
                 </div>
+
                 <h3 className="text-xl font-bold text-black mb-3 line-clamp-3">
                   {report.title}
                 </h3>
+
                 <div className="mt-4 flex items-center text-sm font-bold text-black">
                   READ MORE
                   <svg
