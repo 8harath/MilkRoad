@@ -1,10 +1,59 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import DarkModeToggle from "@/components/DarkModeToggle";
+import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Milk Road Pro Reports",
-  description: "Professional crypto research reports that don't suck",
+  title: {
+    default: "Milk Road Pro Reports - Free Crypto Research & Analysis",
+    template: "%s | Milk Road Pro",
+  },
+  description: "Access 126+ professional crypto research reports for free. Deep dives into DeFi, NFTs, tokenomics, and market analysis. Information should be free for all.",
+  keywords: [
+    "Milk Road Pro",
+    "Milk Road",
+    "crypto reports",
+    "crypto research",
+    "DeFi analysis",
+    "NFT research",
+    "tokenomics",
+    "crypto market analysis",
+    "blockchain reports",
+    "cryptocurrency research",
+    "free crypto reports",
+    "crypto education",
+  ],
+  authors: [{ name: "Milk Road Pro" }],
+  creator: "Milk Road Pro Archive",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://milkroadpro.com",
+    title: "Milk Road Pro Reports - Free Crypto Research",
+    description: "126+ professional crypto research reports. DeFi, NFTs, tokenomics, and market insights. Free access for all.",
+    siteName: "Milk Road Pro Reports",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Milk Road Pro Reports",
+    description: "126+ free professional crypto research reports",
+    creator: "@milkroad",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your verification code
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +76,8 @@ export default function RootLayout({
               <Link href="/" className="text-2xl md:text-3xl font-bold text-black hover:animate-wiggle">
                 🥛 MILK ROAD
               </Link>
-              <div className="flex gap-4 md:gap-6">
+              <div className="flex items-center gap-3 md:gap-4">
+                <DarkModeToggle />
                 <Link
                   href="/"
                   className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
@@ -36,9 +86,15 @@ export default function RootLayout({
                 </Link>
                 <Link
                   href="/archive"
-                  className="text-sm md:text-base font-bold text-black hover:bg-pink-400 px-3 py-2 border-2 border-black transition-colors"
+                  className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
                 >
                   ARCHIVE
+                </Link>
+                <Link
+                  href="/intent"
+                  className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
+                >
+                  INTENT
                 </Link>
                 <Link
                   href="/contact"
@@ -51,6 +107,29 @@ export default function RootLayout({
           </div>
         </nav>
         {children}
+
+        {/* Structured Data */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Milk Road Pro Reports',
+              description: '126+ free professional crypto research reports',
+              url: 'https://milkroadpro.com',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://milkroadpro.com/archive?search={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );

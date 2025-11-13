@@ -6,7 +6,13 @@
   --background: #ffffff;
   --foreground: #000000;
   --accent-yellow: #ffeb3b;
-  --accent-pink: #ff69b4;
+  --accent-blue: #00bfff;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent-yellow: #ffeb3b;
   --accent-blue: #00bfff;
 }
 
@@ -18,6 +24,52 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode overrides */
+.dark nav,
+.dark header,
+.dark footer,
+.dark .border-black {
+  border-color: white !important;
+}
+
+.dark .bg-white {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+.dark .bg-black {
+  background-color: #ffffff !important;
+  color: black !important;
+}
+
+.dark .text-black {
+  color: white !important;
+}
+
+.dark .text-white {
+  color: black !important;
+}
+
+.dark .bg-yellow-400,
+.dark .bg-blue-400 {
+  color: black !important;
+}
+
+.dark .brutal-shadow,
+.dark .brutal-shadow-sm,
+.dark .brutal-shadow-lg {
+  box-shadow: 4px 4px 0px 0px #ffffff !important;
+}
+
+.dark .brutal-shadow-hover:hover {
+  box-shadow: 6px 6px 0px 0px #ffffff !important;
+}
+
+.dark .brutal-shadow-hover:active {
+  box-shadow: 2px 2px 0px 0px #ffffff !important;
 }
 
 @layer utilities {
@@ -133,7 +185,7 @@ body {
 }
 
 .markdown-content a {
-  @apply text-black font-bold underline decoration-4 decoration-yellow-400 hover:decoration-pink-400 transition-colors;
+  @apply text-black font-bold underline decoration-4 decoration-yellow-400 hover:decoration-blue-400 transition-colors;
 }
 
 .markdown-content ul, .markdown-content ol {
@@ -199,10 +251,6 @@ body {
 
 .retro-button {
   @apply border-4 border-black bg-yellow-400 px-6 py-3 font-bold text-black brutal-shadow-hover transition-all uppercase tracking-wide;
-}
-
-.retro-button-pink {
-  @apply border-4 border-black bg-pink-400 px-6 py-3 font-bold text-black brutal-shadow-hover transition-all uppercase tracking-wide;
 }
 
 .retro-button-blue {
