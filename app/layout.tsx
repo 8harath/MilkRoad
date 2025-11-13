@@ -1,9 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import MobileNav from "@/components/MobileNav";
+import ScrollToTop from "@/components/ScrollToTop";
 import Script from "next/script";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffeb3b' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+};
 
 export const metadata: Metadata = {
   title: {
@@ -25,8 +37,11 @@ export const metadata: Metadata = {
     "free crypto reports",
     "crypto education",
   ],
-  authors: [{ name: "Milk Road Pro" }],
+  authors: [{ name: "Milk Road Pro Archive" }],
   creator: "Milk Road Pro Archive",
+  publisher: "Milk Road Pro Archive",
+  applicationName: "Milk Road Pro Reports",
+  category: 'finance',
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -52,9 +67,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code', // Add your verification code
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-icon.svg',
   },
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({
@@ -116,6 +133,7 @@ export default function RootLayout({
           </div>
         </nav>
         {children}
+        <ScrollToTop />
 
         {/* Structured Data */}
         <Script
