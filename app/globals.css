@@ -6,7 +6,6 @@
   --background: #ffffff;
   --foreground: #000000;
   --accent-yellow: #ffeb3b;
-  --accent-pink: #ff69b4;
   --accent-blue: #00bfff;
 }
 
@@ -133,7 +132,7 @@ body {
 }
 
 .markdown-content a {
-  @apply text-black font-bold underline decoration-4 decoration-yellow-400 hover:decoration-pink-400 transition-colors;
+  @apply text-black font-bold underline decoration-4 decoration-yellow-400 hover:decoration-blue-400 transition-colors;
 }
 
 .markdown-content ul, .markdown-content ol {
@@ -199,10 +198,6 @@ body {
 
 .retro-button {
   @apply border-4 border-black bg-yellow-400 px-6 py-3 font-bold text-black brutal-shadow-hover transition-all uppercase tracking-wide;
-}
-
-.retro-button-pink {
-  @apply border-4 border-black bg-pink-400 px-6 py-3 font-bold text-black brutal-shadow-hover transition-all uppercase tracking-wide;
 }
 
 .retro-button-blue {

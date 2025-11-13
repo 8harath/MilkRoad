@@ -27,7 +27,7 @@ export default function RootLayout({
               <Link href="/" className="text-2xl md:text-3xl font-bold text-black hover:animate-wiggle">
                 🥛 MILK ROAD
               </Link>
-              <div className="flex gap-4 md:gap-6">
+              <div className="flex gap-3 md:gap-4">
                 <Link
                   href="/"
                   className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
@@ -36,9 +36,15 @@ export default function RootLayout({
                 </Link>
                 <Link
                   href="/archive"
-                  className="text-sm md:text-base font-bold text-black hover:bg-pink-400 px-3 py-2 border-2 border-black transition-colors"
+                  className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
                 >
                   ARCHIVE
+                </Link>
+                <Link
+                  href="/intent"
+                  className="text-sm md:text-base font-bold text-black hover:bg-yellow-400 px-3 py-2 border-2 border-black transition-colors"
+                >
+                  INTENT
                 </Link>
                 <Link
                   href="/contact"

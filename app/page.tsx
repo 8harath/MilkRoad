@@ -78,41 +78,9 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <Link href="/archive" className="retro-button-pink inline-block">
+          <Link href="/archive" className="retro-button inline-block">
             View All {reports.length} Reports
           </Link>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="border-t-4 border-black bg-blue-400 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-black mb-2">
-                {reports.length}+
-              </div>
-              <div className="text-xl font-bold text-black">
-                PRO REPORTS
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-black mb-2">
-                🔥
-              </div>
-              <div className="text-xl font-bold text-black">
-                FIRE ANALYSIS
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-black mb-2">
-                💎
-              </div>
-              <div className="text-xl font-bold text-black">
-                GEM HUNTING
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -129,6 +97,9 @@ export default function Home() {
               </Link>
               <Link href="/archive" className="text-black font-bold hover:underline">
                 Archive
+              </Link>
+              <Link href="/intent" className="text-black font-bold hover:underline">
+                Intent
               </Link>
               <Link href="/contact" className="text-black font-bold hover:underline">
                 Contact

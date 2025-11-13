@@ -60,7 +60,7 @@ export default function ReportPage({ params }: { params: { slug: string } }) {
       </header>
 
       {/* Report Header */}
-      <section className="border-b-4 border-black bg-gradient-to-r from-yellow-200 to-pink-200">
+      <section className="border-b-4 border-black bg-gradient-to-r from-yellow-200 to-blue-200">
         <div className="max-w-5xl mx-auto px-6 py-12">
           {report.date && (
             <div className="inline-block bg-black text-white px-4 py-2 font-bold mb-6">
@@ -92,7 +92,7 @@ export default function ReportPage({ params }: { params: { slug: string } }) {
             </Link>
             <Link
               href="/"
-              className="retro-button-pink w-full md:w-auto text-center"
+              className="retro-button-blue w-full md:w-auto text-center"
             >
               🏠 Back to Home
             </Link>
@@ -113,6 +113,9 @@ export default function ReportPage({ params }: { params: { slug: string } }) {
               </Link>
               <Link href="/archive" className="text-black font-bold hover:underline">
                 Archive
+              </Link>
+              <Link href="/intent" className="text-black font-bold hover:underline">
+                Intent
               </Link>
               <Link href="/contact" className="text-black font-bold hover:underline">
                 Contact
