@@ -1,4 +1,4 @@
-[[MILK]]
+
 Understanding the state of the Bitcoin blockchain with respect to the price at which BTC is being valued by the market is indispensable for any investor in this new asset.
 
 In fact, Bitcoin _on–chain_ data has been used in conjunction with _off–chain_ market data in order to create metrics and indicators that help investors gain fundamental insights into the current state of the market, understand investor sentiment, or model the value of Bitcoin.

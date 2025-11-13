@@ -7,7 +7,7 @@
 [Jay Hamilton](https://themilkroad.beehiiv.com/authors/d3beb287-500c-43bc-a934-bb7a9a2d1684) & [Kyle Reidhead](https://themilkroad.beehiiv.com/authors/d176859d-5e45-4771-986b-fcf85b8c89de)  
 March 21, 2024
 
-[[MILK]]]
+]
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Fthe-biggest-narrative-of-2024)[
 

@@ -1,4 +1,4 @@
-[[MILK]]
+
 
 You may have noticed that crypto moves in massive cycles?
 

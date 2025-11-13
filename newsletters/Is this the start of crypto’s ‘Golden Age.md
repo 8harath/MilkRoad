@@ -4,7 +4,7 @@
 
 December 28, 2024
 
-[[MILK]]]
+]
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Fis-this-the-start-of-crypto-s-golden-age)[
 
