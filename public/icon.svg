@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- High-res Milk Bottle Icon for PWA -->
+  <rect width="512" height="512" fill="black"/>
+
+  <!-- Bottle body -->
+  <path d="M192 144 L192 112 C192 96 200 80 216 80 L296 80 C312 80 320 96 320 112 L320 144 L336 160 L336 416 C336 432 320 448 304 448 L208 448 C192 448 176 432 176 416 L176 160 Z"
+        fill="white"
+        stroke="white"
+        stroke-width="8"
+        stroke-linejoin="round"/>
+
+  <!-- Bottle cap -->
+  <rect x="208" y="64" width="96" height="32" rx="8" fill="white"/>
+
+  <!-- Milk level -->
+  <path d="M192 304 L192 416 C192 428 196 440 208 440 L304 440 C316 440 320 428 320 416 L320 304 Z"
+        fill="black"
+        opacity="0.15"/>
+
+  <!-- Highlight -->
+  <ellipse cx="240" cy="224" rx="24" ry="48" fill="black" opacity="0.1"/>
+</svg>
