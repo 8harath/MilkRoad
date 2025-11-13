@@ -3,7 +3,7 @@
 ## Why Maker is down (and what comes next)... 📊
 
 November 02, 2024
-[[MILK]]]
+]
 [
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Fpro-time-to-sell-your-mkr)[

@@ -4,7 +4,7 @@
 
 March 02, 2023
 
-[[MILK]]]
+]
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Flooks-vs-blur-vs-x2y2-tokenomics)[
 

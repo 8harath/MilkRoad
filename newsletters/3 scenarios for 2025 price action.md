@@ -4,7 +4,7 @@
 
 January 04, 2025
 
-[[MILK]]]
+]
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2F3-scenarios-for-2025-price-action)[
 

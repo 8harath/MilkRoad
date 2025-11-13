@@ -4,7 +4,7 @@
 
 September 06, 2023
 
-[[MILK]]L
+L
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Fhow-we-know-the-next-bull-cycle-will-come)[
 

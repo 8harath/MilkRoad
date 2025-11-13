@@ -4,7 +4,7 @@
 
 August 31, 2024
 
-[[MILK]]]
+]
 
 ](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthemilkroad.beehiiv.com%2Fp%2Ftime-to-sell-or-buy-defi-tokens)[
 
